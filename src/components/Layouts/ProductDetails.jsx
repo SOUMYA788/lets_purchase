@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from "react-router-dom";
 import { getProductDetails } from '../../Reducers/StockReducer';
 import { ProductDetailsList } from "../"
+import { useCurrentLocalStorageState } from '../../Context/LocalStorageDataContext';
 
 export const ProductDetails = () => {
-
+  const [localstorageState, dispatch] = useCurrentLocalStorageState()
   const [selectedProductDetails, setSelectedProductDetails] = useState(null);
   const [selectedProductImage, setSelectedProductImage] = useState(null);
   const { productName, catagory } = useParams();
@@ -34,7 +35,24 @@ export const ProductDetails = () => {
     return (
       <>
         <Link to={`/purchase/${productName}`} className='px-2 py-1 bg-blue-200 transition-colors hover:bg-blue-100 active:bg-blue-200'>PURCHASE</Link>
-        <p className='px-2 py-1 bg-blue-400 cursor-pointer transition-colors hover:bg-blue-500 hover:text-white active:bg-blue-400 active:text-black'>ADD TO CART</p>
+        <p className='px-2 py-1 bg-blue-400 cursor-pointer transition-colors hover:bg-blue-500 hover:text-white active:bg-blue-400 active:text-black' onClick={(e) => {
+          e.stopPropagation();
+          let productImage = selectedProductDetails?.img[0];
+          let productPrice = selectedProductDetails?.price;
+          let productDetails = {
+            productName,
+            productImage,
+            productPrice
+          }
+
+          dispatch({
+            type: "addItems",
+            productDetails
+          })
+
+        }}>
+          ADD TO CART
+        </p>
       </>
     )
   }
@@ -65,9 +83,7 @@ export const ProductDetails = () => {
           </div>
 
           <div className='flex flex-row items-center justify-between p-2 mt-3'>
-            {
-              selectedProductDetails && setupCTABtn()
-            }
+            {selectedProductDetails && setupCTABtn()}
           </div>
 
         </div>

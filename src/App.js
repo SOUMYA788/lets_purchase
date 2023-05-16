@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AllProducts, Cart, Header, ProductDetails, Products } from "./components";
 
 function App() {
+  
   return (
     <Router>
       <div
@@ -22,7 +23,6 @@ function App() {
 
       </div>
     </Router>
-    //product/pc/Dell_Inspiron" 
   );
 }
 
