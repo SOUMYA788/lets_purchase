@@ -38,11 +38,14 @@ export const ProductDetails = () => {
         <p className='px-2 py-1 bg-blue-400 cursor-pointer transition-colors hover:bg-blue-500 hover:text-white active:bg-blue-400 active:text-black' onClick={(e) => {
           e.stopPropagation();
           let productImage = selectedProductDetails?.img[0];
-          let productPrice = selectedProductDetails?.price;
+          let productPrice = selectedProductDetails?.details?.price;
+          let buildForm = selectedProductDetails?.buildForm;
+          
           let productDetails = {
             productName,
             productImage,
-            productPrice
+            productPrice,
+            buildForm
           }
 
           dispatch({

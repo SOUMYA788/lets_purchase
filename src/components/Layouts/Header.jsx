@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { BsCart4, BsSearch } from 'react-icons/bs'
 import { allCatagories } from '../../Reducers/StockReducer'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { SearchBar } from './SearchBar'
+import { useCurrentLocalStorageState } from '../../Context/LocalStorageDataContext'
 const Header = () => {
   const [searchBarState, setSearchBarState] = useState(false)
   const [searchValue, setsearchValue] = useState("")
+  const [{ cartItems }, dispatch] = useCurrentLocalStorageState();
   return (
     <>
       <div className='w-full h-[40px] relative flex flex-row gap-6 text-white justify-between items-center px-[5px] py-[1px]'>
@@ -20,7 +22,16 @@ const Header = () => {
 
           <SearchBar searchBarState={searchBarState} setSearchBarState={setSearchBarState} searchValue={searchValue} setsearchValue={setsearchValue} />
 
-          <BsCart4 className='w-[25px] h-[25px] text-[rgba(255,255,255,0.8)] outline-none border-none hover:text-[rgba(255,255,255,1)]' />
+          <div className="relative">
+            <Link to={`/cart`}>
+              <BsCart4 className='w-[25px] h-[25px] text-[rgba(255,255,255,0.8)] outline-none border-none hover:text-[rgba(255,255,255,1)]' />
+              <p className='absolute -top-2 -right-2 text-[rgba(255,255,255,0.8)]'>
+                {
+                  cartItems.length
+                }
+              </p>
+            </Link>
+          </div>
 
         </div>
       </div>
@@ -45,7 +56,6 @@ const Header = () => {
       </div>
     </>
   )
-
 }
 
 

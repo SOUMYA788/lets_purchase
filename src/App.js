@@ -1,9 +1,28 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AllProducts, Cart, Header, ProductDetails, Products } from "./components";
+import { useCurrentLocalStorageState } from "./Context/LocalStorageDataContext";
 
 function App() {
-  
+  const [localStorageReducerState, dispatch] = useCurrentLocalStorageState();
+  const { masterKey } = localStorageReducerState;
+
+  useEffect(() => {
+
+    let prevLocalStorageData = JSON.parse(localStorage.getItem(masterKey));
+
+    if (prevLocalStorageData) {
+      dispatch({
+        type: "syncWithLocalStorage",
+        localStorageState: prevLocalStorageData
+      })
+    } else {
+      localStorage.setItem(masterKey, JSON.stringify(localStorageReducerState))
+    }
+
+  }, [])
+
+
   return (
     <Router>
       <div
