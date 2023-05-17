@@ -20,14 +20,14 @@ export const localStorageDataUpdator = (state, action) => {
         case "addItems": {
             let prevLocalStorageData = currentLocalStorageData();
 
-            localStorage.setItem(localStorageData?.masterKey, JSON.stringify({
+            localStorage.setItem(state?.masterKey, JSON.stringify({
                 ...prevLocalStorageData,
                 cartItems: [
                     ...prevLocalStorageData?.cartItems,
                     action.productDetails
                 ]
             }))
-            
+
             return {
                 ...state,
                 cartItems: [
@@ -43,18 +43,18 @@ export const localStorageDataUpdator = (state, action) => {
 
             let removeItem = action.removedItem;
 
-            let availableItems = localStorageData.cartItems.filter((item, indx) => {
-                if (item.name !== removeItem.name) {
+            let availableItems = state.cartItems.filter((item, indx) => {
+                if (item.productName !== removeItem) {
                     return item
                 }
             })
 
-            localStorage.setItem(localStorageData?.masterKey, {
+            localStorage.setItem(state?.masterKey, JSON.stringify({
                 ...prevLocalStorageData,
                 cartItems: [
                     ...availableItems
                 ]
-            })
+            }))
 
             return {
                 ...state,

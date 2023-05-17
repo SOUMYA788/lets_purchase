@@ -1,9 +1,11 @@
 import React from 'react'
 import { BsX } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
+import { useCurrentLocalStorageState } from '../../Context/LocalStorageDataContext'
 const ProductCard = ({ image, name, price, buildForm, fromCart }) => {
+    const [localstorageState, dispatch] = useCurrentLocalStorageState()
     return (
-        <div className={`p-2 ${fromCart ? "min-w-[350px] w-full h-fit flex-row" : "w-[calc(50%-0.75rem)] h-[210px] flex-col cursor-pointer"} flex items-center justify-between bg-[rgba(255,255,255,0.2)] backdrop-blur border border-slate-50 rounded-sm duration-300 sm:hover:scale-105 sm:w-[150px]`}>
+        <div className={`p-2 ${fromCart ? "min-w-[350px] w-full h-fit flex-row" : "w-[calc(50%-0.75rem)] h-[210px] flex-col cursor-pointer sm:hover:scale-105 sm:w-[150px]"} flex items-center justify-between bg-[rgba(255,255,255,0.2)] backdrop-blur border border-slate-50 rounded-sm duration-300`}>
             <div className={`${fromCart ? "w-[80px] h-[80px]" : "w-full h-[150px]"} bg-white`}>
                 <Link to={`/product/${buildForm}/${name}`} className='bg-transparent w-full h-full'>
                     <img src={image} alt={`${image}_${name}`} className='w-full h-full object-contain' />
@@ -20,7 +22,13 @@ const ProductCard = ({ image, name, price, buildForm, fromCart }) => {
             </div>
 
             {
-                fromCart && <BsX className='w-[30px] h-[30px] cursor-pointer text-slate-50 mx-1 hover:text-slate-300'/>
+                fromCart && <BsX className='w-[30px] h-[30px] cursor-pointer text-slate-50 mx-1 hover:text-slate-300' onClick={(e) => {
+                    e.stopPropagation();
+                    dispatch({
+                        type: "removeItems",
+                        removedItem: name
+                    })
+                }} />
             }
 
         </div>
