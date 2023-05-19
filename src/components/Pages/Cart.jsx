@@ -15,8 +15,10 @@ export const Cart = () => {
     }
   }, [cartItems])
 
+  if (cartItems.length < 1) return (<div className='text-center text-blue-100 p-5 h-1/2 flex justify-center'>No Items Available</div>)
+
   return (
-    <div className='w-full h-fit flex flex-col gap-5 sm:flex-row'>
+    <div className='w-full h-full flex flex-col gap-5 sm:flex-row'>
 
       <div className="productRow flex-1 w-full flex flex-col gap-2 overflow-x-scroll">
         {
@@ -46,6 +48,7 @@ export const Cart = () => {
           <button className='text-sm px-5 py-2 bg-blue-600 text-blue-100 outline-none ring-blue-400 hover:ring-2 hover:text-blue-600 hover:bg-blue-100' onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
+            // Payment Integration Required...
           }}>PAY NOW</button>
         </div>
       </div>

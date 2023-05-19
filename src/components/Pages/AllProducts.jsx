@@ -5,14 +5,14 @@ import { useCurrentStockState } from '../../Context/StockDataContext'
 export const AllProducts = () => {
   const [stockDataState, dispatch] = useCurrentStockState();
   return (
-    <div className='w-full h-full flex flex-col items-center mx-auto overflow-x-scroll sm:w-[650px]'>
+    <div className='w-full min-h-full flex flex-col items-center mx-auto sm:w-[650px]'>
       {
         allCatagories.map((catagory, indx) => {
           let products = stockDataState[catagory];
           return (
             <div className='w-full' key={`product_list_${indx}`}>
               <p className='w-full text-slate-300 py-2 tracking-wider'>{catagory.toUpperCase()}</p>
-              <div className='w-full flex flex-row gap-2 flex-wrap my-2 sm:w-[650px] sm:justify-center' key={`AllProducts_${indx}`}>
+              <div className='w-full mx-auto flex flex-row gap-[10px] flex-wrap my-2 sm:w-630px' key={`AllProducts_${indx}`}>
                 {
                   products.map((product) => {
                     return (

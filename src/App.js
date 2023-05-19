@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { AllProducts, Cart, Header, ProductDetails, Products } from "./components";
+import { AllProducts, Cart, Footer, Header, ProductDetails, Products } from "./components";
 import { useCurrentLocalStorageState } from "./Context/LocalStorageDataContext";
 
 function App() {
@@ -25,21 +25,17 @@ function App() {
 
   return (
     <Router>
-      <div
-        className="App bg-gradient-to-br text-[1em] from-blue-950 to-blue-800
-        flex flex-col w-full h-[100dvh] p-[10px] overflow-y-scroll scroll-smooth select-none" focus="true">
-
+      <div className="App relative bg-gradient-to-br text-[1em] from-blue-950 to-blue-800 flex flex-col w-full h-[100dvh] px-[10px] py-1 overflow-hidden select-none">
         <Header />
-
-        <Routes>
-          <Route path="/" element={<AllProducts />} />
-          <Route path="/product/:catagory" element={<Products />} />
-          <Route path="/product/:catagory/:productName" element={<ProductDetails />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-
-        {/* <Footer/> */}
-
+        <div className="w-full h-[calc(100%-100px)] overflow-y-scroll scroll-smooth">
+          <Routes>
+            <Route path="/" element={<AllProducts />} />
+            <Route path="/product/:catagory" element={<Products />} />
+            <Route path="/product/:catagory/:productName" element={<ProductDetails ProductDetailsMainHeight={"h-[calc(100dvh-100px)]"}/>} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+          <Footer />
+        </div>
       </div>
     </Router>
   );

@@ -4,7 +4,7 @@ import { getProductDetails } from '../../Reducers/StockReducer';
 import { ProductDetailsList } from "../"
 import { useCurrentLocalStorageState } from '../../Context/LocalStorageDataContext';
 
-export const ProductDetails = () => {
+export const ProductDetails = ({ ProductDetailsMainHeight }) => {
   const [localstorageState, dispatch] = useCurrentLocalStorageState()
   const [selectedProductDetails, setSelectedProductDetails] = useState(null);
   const [selectedProductImage, setSelectedProductImage] = useState(null);
@@ -40,7 +40,7 @@ export const ProductDetails = () => {
           let productImage = selectedProductDetails?.img[0];
           let productPrice = selectedProductDetails?.details?.price;
           let buildForm = selectedProductDetails?.buildForm;
-          
+
           let productDetails = {
             productName,
             productImage,
@@ -61,17 +61,15 @@ export const ProductDetails = () => {
   }
 
   return (
-    <div className='w-full h-[calc(100%-90px)] flex-1 p-2 mx-auto'>
-
-      <div className="p-2 mb-2 text-slate-200 bg-blue-600 flex flex-row items-center justify-between">
+    <div className={`w-full ${ProductDetailsMainHeight}`}>
+      <div className="w-full h-[35px] p-2 mb-[10px] text-slate-200 bg-blue-600 flex flex-row items-center justify-between">
         <h2>{productName}</h2>
         <h2>{selectedProductDetails?.details?.price.toLocaleString()}</h2>
       </div>
 
+      <div className="w-full h-[calc(100%-45px)] flex flex-col gap-3 overflow-y-scroll sm:overflow-y-hidden sm:flex-row">
 
-      <div className="w-full flex flex-col gap-3 overflow-y-scroll overflow-x-hidden sm:overflow-y-hidden sm:flex-row sm:h-full">
-
-        <div className='w-full h-fit sm:h-full sm:max-w-[300px]'>
+        <div className='w-full h-full sm:h-full sm:max-w-[300px]'>
 
           <div className="w-full h-[200px] flex flex-row justify-between gap-2 bg-blue-600 p-2">
 
@@ -91,7 +89,7 @@ export const ProductDetails = () => {
 
         </div>
 
-        <div className="w-full h-fit flex flex-col gap-2 bg-blue-600 p-2 sm:h-full sm:overflow-y-scroll">
+        <div className="w-full h-full flex-1 flex flex-col gap-2 bg-blue-600 p-2 sm:overflow-y-scroll">
           {selectedProductDetails?.details && <ProductDetailsList stockDetails={selectedProductDetails?.details} />}
         </div>
 

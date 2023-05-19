@@ -5,3 +5,5 @@ export {Cart} from "./Pages/Cart";
 export {Products} from "./Layouts/Products";
 export {ProductDetails} from "./Layouts/ProductDetails";
 export {ProductDetailsList} from "./Layouts/ProductDetailsList";
+export {Footer} from "./Layouts/Footer"
+export {FooterLinksSet} from "./Layouts/FooterLinksSet";

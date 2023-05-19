@@ -9,18 +9,16 @@ const Header = () => {
   const [searchValue, setsearchValue] = useState("")
   const [{ cartItems }, dispatch] = useCurrentLocalStorageState();
   return (
-    <>
+    <div className='w-full h-[100px]'>
       <div className='w-full h-[40px] relative flex flex-row gap-6 text-white justify-between items-center px-[5px] py-[1px]'>
         <p className="logo text-[1rem]">let's purchase</p>
 
         <div className="headerRight w-full flex-1 justify-end flex flex-row gap-2 items-center">
 
-          <BsSearch className={`w-[20px] h-[20px] text-[rgba(255,255,255,0.8)] outline-none border-none hover:text-[rgba(255,255,255,1)] ${searchBarState ? "hidden" : "static"} sm:hidden`} onClick={(e) => {
-            e.stopPropagation();
-            setSearchBarState(!searchBarState)
-          }} />
-
-          <SearchBar searchBarState={searchBarState} setSearchBarState={setSearchBarState} searchValue={searchValue} setsearchValue={setsearchValue} />
+          {
+            // we have an option for search bar, for this small project, we didn't requrie this...
+            /* <SearchBar searchBarState={searchBarState} setSearchBarState={setSearchBarState} searchValue={searchValue} setsearchValue={setsearchValue} /> */
+          }
 
           <div className="relative">
             <Link to={`/cart`}>
@@ -36,7 +34,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div id='catagoryNav' className="flex flex-row gap-6 overflow-x-scroll my-[5px] px-[10px]">
+      <div id='catagoryNav' className="flex w-full h-[60px] items-center flex-row gap-6 overflow-x-scroll my-[5px] px-[10px]">
         <NavLink
           to="/"
           className='p-2 text-center text-slate-400 hover:text-slate-300'>
@@ -54,7 +52,7 @@ const Header = () => {
           ))
         }
       </div>
-    </>
+    </div>
   )
 }
 
