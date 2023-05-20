@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import { BsCart4, BsSearch } from 'react-icons/bs'
+import React from 'react'
+import { BsCart4 } from 'react-icons/bs'
 import { allCatagories } from '../../Reducers/StockReducer'
 import { Link, NavLink } from 'react-router-dom'
-import { SearchBar } from './SearchBar'
+// import { SearchBar } from './SearchBar'
 import { useCurrentLocalStorageState } from '../../Context/LocalStorageDataContext'
 const Header = () => {
-  const [searchBarState, setSearchBarState] = useState(false)
-  const [searchValue, setsearchValue] = useState("")
-  const [{ cartItems }, dispatch] = useCurrentLocalStorageState();
+  // const [searchBarState, setSearchBarState] = useState(false)
+  // const [searchValue, setsearchValue] = useState("")
+  const [{ cartItems }] = useCurrentLocalStorageState();
   return (
     <div className='w-full h-[100px]'>
       <div className='w-full h-[40px] relative flex flex-row gap-6 text-white justify-between items-center px-[5px] py-[1px]'>

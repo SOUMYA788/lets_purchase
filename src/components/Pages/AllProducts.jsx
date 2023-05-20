@@ -3,7 +3,7 @@ import { allCatagories } from '../../Reducers/StockReducer'
 import { ProductCard } from '../'
 import { useCurrentStockState } from '../../Context/StockDataContext'
 export const AllProducts = () => {
-  const [stockDataState, dispatch] = useCurrentStockState();
+  const [stockDataState] = useCurrentStockState();
   return (
     <div className='w-full min-h-full flex flex-col items-center mx-auto sm:w-[650px]'>
       {

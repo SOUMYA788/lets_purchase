@@ -43,11 +43,7 @@ export const localStorageDataUpdator = (state, action) => {
 
             let removeItem = action.removedItem;
 
-            let availableItems = state.cartItems.filter((item, indx) => {
-                if (item.productName !== removeItem) {
-                    return item
-                }
-            })
+            let availableItems = state.cartItems.filter(item => item.productName !== removeItem)
 
             localStorage.setItem(state?.masterKey, JSON.stringify({
                 ...prevLocalStorageData,

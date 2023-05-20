@@ -3,7 +3,7 @@ import { BsX } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { useCurrentLocalStorageState } from '../../Context/LocalStorageDataContext'
 const ProductCard = ({ image, name, price, buildForm, fromCart }) => {
-    const [localstorageState, dispatch] = useCurrentLocalStorageState()
+    const [, dispatch] = useCurrentLocalStorageState()
     return (
         <div className={`p-2 ${fromCart ? "min-w-[350px] w-full h-fit flex-row" : "w-[calc(50%-0.75rem)] h-[210px] flex-col cursor-pointer sm:hover:scale-105 sm:w-[150px]"} flex items-center justify-between bg-[rgba(255,255,255,0.2)] backdrop-blur border border-slate-50 rounded-sm duration-300`}>
             <div className={`${fromCart ? "w-[80px] h-[80px]" : "w-full h-[150px]"} bg-white`}>

@@ -441,11 +441,8 @@ export const getProductsFromCatagory = (catagoryName) => {
 export const getProductDetails = (catagory, productName) => {
     if (!catagory || !productName) return null;
     let allProductsFormCatagory = stockData[catagory];
-    let fullProductDetails = allProductsFormCatagory.filter((stockItem) => {
-        if (stockItem?.name === productName) {
-            return stockItem;
-        }
-    })
+    let fullProductDetails = allProductsFormCatagory.filter(stockItem => stockItem?.name === productName);
+
     console.log(fullProductDetails);
     return (fullProductDetails);
 }

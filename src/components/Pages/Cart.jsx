@@ -4,7 +4,7 @@ import { ProductCard } from '../';
 
 export const Cart = () => {
   const [totalAmount, setTotalAmount] = useState(0);
-  const [{ cartItems }, dispatch] = useCurrentLocalStorageState();
+  const [{ cartItems }] = useCurrentLocalStorageState();
   useEffect(() => {
     let rufTotal = 0
     if (cartItems) {

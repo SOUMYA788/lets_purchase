@@ -5,7 +5,7 @@ import { ProductDetailsList } from "../"
 import { useCurrentLocalStorageState } from '../../Context/LocalStorageDataContext';
 
 export const ProductDetails = ({ ProductDetailsMainHeight }) => {
-  const [localstorageState, dispatch] = useCurrentLocalStorageState()
+  const [, dispatch] = useCurrentLocalStorageState()
   const [selectedProductDetails, setSelectedProductDetails] = useState(null);
   const [selectedProductImage, setSelectedProductImage] = useState(null);
   const { productName, catagory } = useParams();

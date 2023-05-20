@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AllProducts, Cart, Footer, Header, ProductDetails, Products } from "./components";
 import { useCurrentLocalStorageState } from "./Context/LocalStorageDataContext";
