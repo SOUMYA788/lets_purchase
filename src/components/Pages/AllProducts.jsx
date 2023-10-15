@@ -10,9 +10,9 @@ export const AllProducts = () => {
         allCatagories.map((catagory, indx) => {
           let products = stockDataState[catagory];
           return (
-            <div className='w-full' key={`product_list_${indx}`}>
-              <p className='w-full text-slate-300 py-2 tracking-wider'>{catagory.toUpperCase()}</p>
-              <div className='w-full mx-auto flex flex-row gap-[10px] flex-wrap my-2 sm:w-630px' key={`AllProducts_${indx}`}>
+            <div className='w-full my-3 py-2 px-2' key={`product_list_${indx}`}>
+              <p className='w-full bg-[rgba(255,255,255,0.2)] backdrop-blur border border-slate-50 rounded-sm p-2 text-slate-300 py-2 tracking-wider'>{catagory.toUpperCase()}</p>
+              <div className='w-full mx-auto flex flex-row gap-[10px] flex-wrap my-2 sm:w-fit' key={`AllProducts_${indx}`}>
                 {
                   products.map((product) => {
                     return (

@@ -12,7 +12,7 @@ export const Products = () => {
   }, [catagory, AllProducts]);
 
   return (
-    <div className="w-full min-h-full flex flex-row flex-wrap gap-[10px] items-center mx-auto sm:w-[630px]">
+    <div className="w-full h-fit flex-1 my-4 flex flex-row flex-wrap gap-[10px] items-center mx-auto sm:w-[630px]">
       {
         AllProducts && AllProducts.map((productsInfo) => (
           <ProductCard

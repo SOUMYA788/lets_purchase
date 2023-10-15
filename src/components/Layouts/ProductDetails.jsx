@@ -61,7 +61,7 @@ export const ProductDetails = ({ ProductDetailsMainHeight }) => {
   }
 
   return (
-    <div className={`w-full ${ProductDetailsMainHeight}`}>
+    <div className={`w-full my-3  `}>
       <div className="w-full h-[35px] p-2 mb-[10px] text-slate-200 bg-blue-600 flex flex-row items-center justify-between">
         <h2>{productName}</h2>
         <h2>{selectedProductDetails?.details?.price.toLocaleString()}</h2>

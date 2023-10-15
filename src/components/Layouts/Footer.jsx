@@ -44,7 +44,7 @@ export const Footer = () => {
     ]
 
     return (
-        <div className='w-full px-2 py-5 mx-auto flex flex-col gap-5 sm:w-[620px]'>
+        <div className='w-full bg-[rgba(255,255,255,0.2)] backdrop-blur border border-slate-50 rounded-sm px-2 py-5 mx-auto flex flex-col gap-5 sm:w-[620px]'>
             <div className='footerDiv w-full flex flex-col gap-[10px] text-white sm:flex-row'>
                 {
                     footerLinks && footerLinks.map((footerLink, indx) => (
@@ -54,7 +54,7 @@ export const Footer = () => {
             </div>
 
             <div className="watermark w-full ">
-                <p className="text-blue-100 text-center tracking-[2px]">THIS APP DEVELOPED AND MAINTAIN BY SOUMYA CHAKRABORTY</p>
+                <p className="text-blue-100 text-center tracking-[2px]">© 2023 letspurchase.com or or its afffiliates</p>
             </div>
 
         </div>

@@ -27,7 +27,7 @@ function App() {
     <Router>
       <div className="App relative bg-gradient-to-br text-[1em] from-blue-950 to-blue-800 flex flex-col w-full h-[100dvh] px-[10px] py-1 overflow-hidden select-none">
         <Header />
-        <div className="w-full h-[calc(100%-100px)] overflow-y-scroll scroll-smooth">
+        <div className="w-full h-[calc(100%-100px)] flex flex-col overflow-y-scroll scroll-smooth">
           <Routes>
             <Route path="/" element={<AllProducts />} />
             <Route path="/product/:catagory" element={<Products />} />
