@@ -5,7 +5,7 @@ import { useCurrentStockState } from '../../Context/StockDataContext'
 export const AllProducts = () => {
   const [stockDataState] = useCurrentStockState();
   return (
-    <div className='w-full min-h-full flex flex-col items-center mx-auto sm:w-[650px]'>
+    <div className='w-full   flex flex-col items-center mx-auto sm:w-[650px]'>
       {
         allCatagories.map((catagory, indx) => {
           let products = stockDataState[catagory];
