@@ -5,7 +5,7 @@ import { ProductDetailsList } from "../"
 import { useCurrentLocalStorageState } from '../../Context/LocalStorageDataContext';
 
 export const ProductDetails = ({ ProductDetailsMainHeight }) => {
-  const [, dispatch] = useCurrentLocalStorageState()
+  const [_, dispatch] = useCurrentLocalStorageState()
   const [selectedProductDetails, setSelectedProductDetails] = useState(null);
   const [selectedProductImage, setSelectedProductImage] = useState(null);
   const { productName, catagory } = useParams();
@@ -61,7 +61,7 @@ export const ProductDetails = ({ ProductDetailsMainHeight }) => {
   }
 
   return (
-    <div className={`w-full my-3  `}>
+    <div className={`w-full my-3  text-base`}>
       <div className="w-full h-[35px] p-2 mb-[10px] text-slate-200 bg-blue-600 flex flex-row items-center justify-between">
         <h2>{productName}</h2>
         <h2>{selectedProductDetails?.details?.price.toLocaleString()}</h2>
@@ -89,7 +89,7 @@ export const ProductDetails = ({ ProductDetailsMainHeight }) => {
 
         </div>
 
-        <div className="w-full h-full flex-1 flex flex-col gap-2 bg-blue-600 p-2 sm:overflow-y-scroll">
+        <div className="w-full h-[440px] text-base flex-1 flex flex-col gap-2 bg-blue-600 p-2 sm:overflow-y-scroll">
           {selectedProductDetails?.details && <ProductDetailsList stockDetails={selectedProductDetails?.details} />}
         </div>
 

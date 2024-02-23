@@ -1,55 +1,48 @@
-import React, { useEffect, useRef } from 'react'
-import { BsSearch } from 'react-icons/bs';
+import React, { useEffect, useRef, useState } from 'react'
+import { BsArrowLeft, BsArrowLeftCircle, BsBack, BsSearch } from 'react-icons/bs';
+import { GoSearch } from "react-icons/go"
+import { IconWrapperBtn } from "./"
 
-export const SearchBar = ({ searchValue, setsearchValue, searchBarState, setSearchBarState }) => {
+const SearchBar = () => {
+    const [searchTerm, setSearchTerm] = useState("")
+    const [showSearchBar, setShowSearchBar] = useState(false)
 
     const searchInput = useRef(null);
 
-    const searchSubmit = (subEvt) => {
-        subEvt.preventDefault();
-        subEvt.stopPropagation();
-        console.log(`Search ${searchValue}`);
+    const changeSearchBarState = (e, value) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setShowSearchBar(value)
+    }
+
+    const searchSubmit = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         setsearchValue("");
         setSearchBarState(false)
     }
 
-    useEffect(() => {
-        if (searchBarState) {
-            searchInput.current.focus()
-        }
-    }, [searchBarState])
+
+    return <>
+
+        <IconWrapperBtn type="button" className={`${showSearchBar ? "hidden" : "flex"}`} onClick={e => changeSearchBarState(e, true)}>
+            <GoSearch className="w-full h-full" />
+        </IconWrapperBtn>
 
 
-    return (
+        <form className={`absolute left-0 top-2 w-full flex-row items-center justify-center p-2 rounded-full bg-white border border-black ${showSearchBar ? "flex" : "hidden"} gap-3`} onSubmit={searchSubmit}>
 
-        <>
-            <BsSearch className={`w-[20px] h-[20px] text-[rgba(255,255,255,0.8)] outline-none border-none hover:text-[rgba(255,255,255,1)] ${searchBarState ? "hidden" : "static"} sm:hidden`} onClick={(e) => {
-                e.stopPropagation();
-                setSearchBarState(!searchBarState)
-            }} />
+            <IconWrapperBtn type="button" className={`${showSearchBar ? "flex" : "hidden"} bg-slate-800 text-slate-300`} onClick={e => changeSearchBarState(e, false)}>
+                <BsArrowLeft className='w-full h-full' />
+            </IconWrapperBtn >
 
-            <div className={`searchDiv absolute top-0 left-0 w-full h-full flex-row justify-between items-center gap-1 bg-blue-900 ${searchBarState ? "flex" : "hidden"} sm:flex sm:static sm:max-w-[320px]`}>
-                <form className='w-full h-full flex flex-row items-center' onSubmit={(subEvt) => searchSubmit(subEvt)}>
-                    <input
-                        ref={searchInput}
-                        type="text"
-                        placeholder="Search..."
-                        value={searchValue}
-                        onChange={(e) => setsearchValue(e.target.value)}
-                        className='h-full w-[calc(100%-40px)] flex-1 bg-transparent p-1 outline-none border-none'
-                        onBlur={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            searchBarState && setSearchBarState(false);
-                        }}
-                    />
-                    <button
-                        type='submit'
-                        className='w-[40px] h-full px-[10px] border bg-transparent border-slate-200 rounded-tl-sm rounded-bl-sm outline-none border-none'>
-                        <BsSearch className='w-full h-full text-[rgba(255,255,255,0.8)] outline-none border-none hover:text-[rgba(255,255,255,1)]' />
-                    </button>
-                </form>
-            </div>
-        </>
-    )
+            <input ref={searchInput} type="text" placeholder="Search..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className='h-full w-full p-1 bg-transparent outline-none border-none text-slate-800' />
+
+            <IconWrapperBtn type='submit' className={`${showSearchBar ? "flex" : "hidden"} bg-slate-800 text-slate-300`}>
+                <BsSearch className='w-full h-full text-slate-200 outline-none border-none hover:text-slate-400' />
+            </IconWrapperBtn>
+        </form>
+    </>
 }
+
+export default SearchBar

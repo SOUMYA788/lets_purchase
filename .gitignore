@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 
+
 #firebase
 .firebase/
 .firebaserc
@@ -12,11 +13,17 @@ firebase-debug.log
 .firebase.json
 firebase.json
 
+
 # testing
 /coverage
 
+
 # production
 /build
+/dist
+dist/
+
+
 
 # misc
 .DS_Store

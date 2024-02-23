@@ -1,4 +1,7 @@
-const { createContext, useReducer, useContext } = require("react");
+// const { createContext, useReducer, useContext } = require("react");
+import React, {createContext, useReducer, useContext} from 'react'
+
+
 
 export const stockContext = createContext();
 

@@ -5,7 +5,7 @@ import { useCurrentLocalStorageState } from '../../Context/LocalStorageDataConte
 const ProductCard = ({ image, name, price, buildForm, fromCart }) => {
     const [, dispatch] = useCurrentLocalStorageState()
     return (
-        <div className={`p-2 ${fromCart ? "min-w-[350px] w-full h-fit flex-row" : "w-[calc(50%-0.75rem)] h-[210px] flex-col cursor-pointer sm:hover:scale-105 sm:w-[150px]"} flex items-center justify-between bg-[rgba(255,255,255,0.2)] backdrop-blur border border-slate-50 rounded-sm duration-300`}>
+        <div className={`p-2 ${fromCart ? "min-w-[350px] w-full h-fit flex-row" : "w-full xs:w-[calc(50%-0.75rem)] h-[210px] flex-col cursor-pointer sm:hover:scale-105 "} flex items-center justify-between bg-[rgba(255,255,255,0.2)] backdrop-blur border border-slate-50 rounded-sm duration-300`}>
             <div className={`${fromCart ? "w-[80px] h-[80px]" : "w-full h-[150px]"} bg-white`}>
                 <Link to={`/product/${buildForm}/${name}`} className='bg-transparent w-full h-full'>
                     <img src={image} alt={`${image}_${name}`} className='w-full h-full object-contain' />

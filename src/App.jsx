@@ -22,16 +22,20 @@ function App() {
 
   }, [])
 
-
+  // bg-gradient-to-br from-blue-950 to-blue-800
   return (
     <Router>
-      <div className="App relative bg-gradient-to-br text-[1em] from-blue-950 to-blue-800 flex flex-col w-full h-[100dvh] px-[10px] py-1 overflow-hidden select-none">
-        <Header />
-        <div className="w-full h-[calc(100%-100px)] flex flex-col overflow-y-scroll scroll-smooth">
+      <div className="App relative text-[1em] flex flex-col w-full p-1 select-none">
+
+        <div className="w-full sticky top-0 z-50 mb-1">
+          <Header />
+        </div>
+
+        <div className="w-full">
           <Routes>
             <Route path="/" element={<AllProducts />} />
             <Route path="/product/:catagory" element={<Products />} />
-            <Route path="/product/:catagory/:productName" element={<ProductDetails ProductDetailsMainHeight={"h-[calc(100dvh-100px)]"}/>} />
+            <Route path="/product/:catagory/:productName" element={<ProductDetails ProductDetailsMainHeight={"h-[calc(100dvh-100px)]"} />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
           <Footer />
