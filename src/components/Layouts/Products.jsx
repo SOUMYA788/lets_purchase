@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getProductsFromCatagory } from '../../Reducers/StockReducer';
+import { getProductsFromCatagory } from '../../store/stock';
 import { ProductCard } from "../";
 
 export const Products = () => {

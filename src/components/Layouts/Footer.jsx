@@ -44,11 +44,11 @@ export const Footer = () => {
     ]
 
     return (
-        <div className='w-full border-2 bg-slate-50 bg-opacity-50 rounded-sm px-2 py-5 mx-auto flex flex-col gap-5 sm:w-[620px]'>
-            <div className='footerDiv w-full flex flex-col gap-[10px] text-slate-800 sm:flex-row'>
+        <div className='w-full border-2 bg-slate-50 bg-opacity-50 rounded-sm px-2 py-5 mx-auto flex flex-col gap-5'>
+            <div className='footerDiv w-full flex flex-col justify-evenly gap-[10px] text-slate-800 sm:flex-row'>
                 {
                     footerLinks && footerLinks.map((footerLink, indx) => (
-                        <FooterLinksSet footerLinkHeadding={footerLink?.linkHeadding} footerLinks={footerLink?.links} />
+                        <FooterLinksSet footerLinkHeadding={footerLink?.linkHeadding} footerLinks={footerLink?.links} key={`footer_link_set_${indx}`}/>
                     ))
                 }
             </div>

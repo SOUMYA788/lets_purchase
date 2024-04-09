@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { useCurrentLocalStorageState } from '../../Context/LocalStorageDataContext'
 import { ProductCard } from '../';
+import { useSelector } from 'react-redux';
+
+
 
 export const Cart = () => {
   const [totalAmount, setTotalAmount] = useState(0);
-  const [{ cartItems }] = useCurrentLocalStorageState();
+
+  const { cartItems } = useSelector(state => state.localStorageReducer)
+  
+
   useEffect(() => {
     let rufTotal = 0
-    if (cartItems) {
+    if (cartItems.length > 0) {
       cartItems.forEach(({ productPrice }, indx) => {
         rufTotal += productPrice
       })
@@ -15,7 +20,10 @@ export const Cart = () => {
     }
   }, [cartItems])
 
+
   if (cartItems.length < 1) return (<div className='text-center text-blue-100 p-5 h-1/2 flex justify-center'>No Items Available</div>)
+
+
 
   return (
     <div className='w-full h-full flex flex-col gap-5 sm:flex-row'>

@@ -1,7 +1,7 @@
 import { android_lava_blaze_2_banner, android_lava_blaze_2_image, android_poco_c55, android_poco_m4_pro, android_yuva_2_pro_banner, android_yuva_2_pro_images, laptop_dell_vostro_3420, laptop_dell_vostro_3510, laptop_hp_15s, laptop_hp_omen_16, laptop_rog_strix_g17, laptop_tuf_gaming_a15, pc_dell_inspiron, pc_dell_vostro_3710, pc_hp_24, pc_hp_aio_24 } from "../API/imgAPI";
 
-
 export const stockData = {
+
     "pc": [
 
         {
@@ -414,35 +414,23 @@ export const stockData = {
     ]
 }
 
-export const productDetailsUpdator = (state, action) => {
-    switch (action.type) {
-        case "addNewItem": {
-            return {
-                ...state,
-                ...action.newItem
-            }
-        }
 
-        default: {
-            return {
-                ...state
-            }
-        }
-    }
-}
 
 export const allCatagories = Object.keys(stockData);
 
+
+
 export const getProductsFromCatagory = (catagoryName) => {
-    if (!catagoryName) return null
-    return stockData[catagoryName]
+    if (!catagoryName) return null;
+    return stockData[catagoryName];
 }
+
+
 
 export const getProductDetails = (catagory, productName) => {
     if (!catagory || !productName) return null;
-    let allProductsFormCatagory = stockData[catagory];
-    let fullProductDetails = allProductsFormCatagory.filter(stockItem => stockItem?.name === productName);
+    const allProductsFormCatagory = stockData[catagory];
+    const fullProductDetails = allProductsFormCatagory.filter(stockItem => stockItem?.name === productName);
 
-    console.log(fullProductDetails);
     return (fullProductDetails);
 }
